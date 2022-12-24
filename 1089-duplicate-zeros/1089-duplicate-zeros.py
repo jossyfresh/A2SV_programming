@@ -4,9 +4,10 @@ class Solution:
         Do not return anything, modify arr in-place instead.
         """
         i = 0
-        while i < len(arr):
+        len_arr = len(arr)
+        while i < len_arr:
             if arr[i]==0:
-                k = arr.pop()
+                arr.pop()
                 arr.insert(i,0)
                 i+=2
             else:
