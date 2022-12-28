@@ -3,8 +3,14 @@ class Solution:
         dict1 = {}
         dict2 = {}
         for i in range(len(matches)):
-            dict1[matches[i][0]] = dict1.get(matches[i][0],0)+1
-            dict2[matches[i][1]] = dict2.get(matches[i][1],0)+1
+            if matches[i][0] in dict1:
+                dict1[matches[i][0]]+=1
+            else:
+                dict1[matches[i][0]]=1
+            if matches[i][1] in dict2:
+                dict2[matches[i][1]]+=1
+            else:
+                dict2[matches[i][1]]=1
         win = []
         lose = []
         for x in dict1:
