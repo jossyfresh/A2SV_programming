@@ -7,12 +7,9 @@ class Solution:
         print(heights)
         l = 0
         while l < len(names):
-            if x != heights:
-                for i in range(len(names)-(l+1)):
-                    if heights[i] < heights[i+1]:
-                        heights[i],heights[i+1] = heights[i+1],heights[i]
-                        names[i],names[i+1] = names[i+1],names[i]
-            else:
-                break
+            for i in range(len(names)-(l+1)):
+                if heights[i] < heights[i+1]:
+                    heights[i],heights[i+1] = heights[i+1],heights[i]
+                    names[i],names[i+1] = names[i+1],names[i]
             l+=1
         return names
