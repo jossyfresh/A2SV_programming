@@ -1,7 +1,6 @@
 class Solution:
     def countDistinctIntegers(self, nums: List[int]) -> int:
         numbers = set(nums)
-        count = len(nums)
         def reverse(num):
             number = []
             i = 0
@@ -18,7 +17,6 @@ class Solution:
         for val in numbers:
             nums.append(reverse(val))
         nums = set(nums)
-    
         return len(nums)
     
     
