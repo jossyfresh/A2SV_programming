@@ -57,7 +57,6 @@ class MyLinkedList:
             for _ in range(0, index - 1):
                 temp = temp.next
             temp.next = temp.next.next
-
         self.count -= 1
 # Your MyLinkedList object will be instantiated and called as such:
 # obj = MyLinkedList()
