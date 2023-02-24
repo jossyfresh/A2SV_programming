@@ -1,0 +1,21 @@
+length = list(map(int,input().split()))
+word = input()
+k = length[1]
+dictionary = {}
+for i,x in enumerate(word):
+    dictionary[i] = x
+dicti = sorted(dictionary.items(),key = lambda x:x[1])
+diction = dict(dicti)
+ 
+for key,values in dict(diction).items():
+    if k == 0:
+        break
+    diction.pop(key)
+    k-=1
+ans = []
+newlist = list(diction.keys())
+newlist.sort()
+newdict = {i: diction[i] for i in newlist}
+for x in newdict:
+    ans.append(newdict[x])
+print("".join(ans))
