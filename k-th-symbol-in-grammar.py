@@ -1,0 +1,9 @@
+class Solution:
+    def kthGrammar(self, n: int, k: int) -> int:
+        def recur(n,k):
+            if n == 1:
+                return 0
+            if k%2 != 0:
+                return 1 if recur(n-1,(k//2)+1) else 0
+            return 0 if recur(n-1,k//2) else 1
+        return recur(n,k)
