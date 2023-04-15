@@ -1,0 +1,23 @@
+function findDisappearedNumbers(nums: number[]): number[] {
+    let ans:number[] = [];
+    let i:number = 0;
+    let len_:number = nums.length; 
+    let cp:number = 0;
+    while (i < len_ ){
+        cp = nums[i] - 1
+        if (cp < len_ && cp >= 0 && nums[cp] != nums[i]){
+            let temp:number = nums[i]
+            nums[i] = nums[cp]
+            nums[cp] = temp
+        }
+        else{
+            i++
+        }
+    }
+    for (let i = 0;i < len_;i++){
+        if (nums[i] != i+1){
+            ans.push(i+1)
+        }
+    }
+    return ans
+};
