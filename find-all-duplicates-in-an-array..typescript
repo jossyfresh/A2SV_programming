@@ -1,0 +1,23 @@
+function findDuplicates(nums: number[]): number[] {
+    let ans:number[] = []
+    let i:number = 0
+    let cp:number = 0
+    while(i < nums.length){
+        cp = nums[i] - 1
+        if (cp < nums.length && cp >= 0 && nums[cp] != nums[i]){
+            let temp:number = nums[i]
+            nums[i] = nums[cp]
+            nums[cp] = temp
+        }
+        else{
+            i++
+        }
+    }
+    console.log(nums)
+    for (let i=0;i<nums.length;i++){
+        if (nums[i] != i+1){
+            ans.push(nums[i])
+        }   
+    }
+    return ans
+};
