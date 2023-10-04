@@ -1,25 +1,19 @@
 class Solution:
     def checkIfPrerequisite(self, numCourses: int, prerequisites: List[List[int]], queries: List[List[int]]) -> List[bool]:
-        adjlist = defaultdict(list)
-        indegree = defaultdict(set)
+        grid = [[float('inf') for i in range(numCourses)] for i in range(numCourses)]
         for x,y in prerequisites:
-            adjlist[x].append(y)
-            indegree[y].add(x)
-        graph = [[False for i in range(numCourses)] for i in range(numCourses)]
-       
-        queue = deque()
+            grid[x][y] = 1
         for i in range(numCourses):
-            queue.append(i)
-            visited = set()
-            while queue:
-                cur = queue.popleft()
-                visited.add(cur)
-                for node in adjlist[cur]:
-                    graph[i][node] = True
-                    if node not in visited:
-                        queue.append(node)
-        ans = []
-        print(graph)
-        for i,j in queries:
-            ans.append(graph[i][j])
+            grid[i][i] = 0
+        for k in range(numCourses):
+            for i in range(numCourses):
+                for j in range(numCourses):
+                    grid[i][j] = min(grid[i][j], grid[i][k] + grid[k][j])
+        print(grid)
+        ans = [False]*len(queries)
+        i = 0
+        for x,y in queries:
+            if grid[x][y] != float('inf'):
+                ans[i] = True
+            i += 1
         return ans
