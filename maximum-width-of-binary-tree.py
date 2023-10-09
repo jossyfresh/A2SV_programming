@@ -7,16 +7,16 @@
 class Solution:
     def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         ans = defaultdict(list)
-        def tr(y,x,node):
+        def dfs(node,level,n):
             if not node:
                 return 
-            ans[y].append(x)
-            tr(y+1,x*2,node.left)
-            tr(y+1,x*2+1,node.right)
-        tr(0,0,root)
-        print(ans)
-        max_ = 0
-        for x in ans:
-            lisst = ans[x]
-            max_ = max(max_,(max(lisst) - min(lisst))+1)
-        return max_
+            ans[level].append(n)
+            left = dfs(node.left,level+1,n*2)
+            right = dfs(node.right,level+1,(n*2)+1)
+            return 
+        dfs(root,1,0) 
+        res = 0
+        for level in ans:
+            x = ans[level]
+            res = max(res,(max(x)-min(x))+1)
+        return res
