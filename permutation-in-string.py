@@ -4,20 +4,16 @@ class Solution:
             return False
         target = Counter(s1)
         window = {}
-        for i in range(len(s1)):
-            window[s2[i]] = window.get(s2[i],0)+1
-        print(window)
-        r = len(s1)
-        l = 0
-        while r < len(s2):
+        left = 0
+        for indx in range(len(s1)-1):
+            window[s2[indx]] = window.get(s2[indx],0)+1
+        
+        for right in range(len(s1)-1,len(s2)):
+            window[s2[right]] = window.get(s2[right],0)+1
             if window == target:
                 return True
-            window[s2[r]] = window.get(s2[r],0)+1
-            window[s2[l]] -= 1
-            if window[s2[l]] == 0:
-                window.pop(s2[l])
-            r+=1
-            l+=1
-        if window == target:
-            return True
+            window[s2[left]]-=1
+            if window[s2[left]] == 0:
+                window.pop(s2[left])
+            left+=1
         return False
